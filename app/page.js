@@ -547,6 +547,7 @@ export default function Home() {
         {/* Form Card */}
         <div className="card">
           <div className="card-title">Analyze Your Case</div>
+
           <label>What category is your problem?</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="">Select a category...</option>
@@ -561,7 +562,7 @@ export default function Home() {
               <input
                 id="fileInput"
                 type="file"
-                accept=".pdf,.txt"
+                accept=".txt"
                 style={{display: 'none'}}
                 onChange={handleFileUpload}
               />
@@ -570,7 +571,7 @@ export default function Home() {
               ) : uploadedText ? (
                 <p style={{fontSize: '13px', color: '#166534'}}>Document uploaded and ready</p>
               ) : (
-                <p style={{fontSize: '13px', color: '#6b8cae'}}>Click to upload a PDF or text file — receipt, notice, or agreement</p>
+                <p style={{fontSize: '13px', color: '#6b8cae'}}>Click to upload a text file — receipt, notice, or agreement</p>
               )}
             </div>
           </div>

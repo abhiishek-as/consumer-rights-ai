@@ -8,8 +8,7 @@ export async function POST(request) {
     }
 
     const arrayBuffer = await file.arrayBuffer();
-    const uint8Array = new Uint8Array(arrayBuffer);
-    const extractedText = new TextDecoder().decode(uint8Array);
+    const extractedText = new TextDecoder().decode(new Uint8Array(arrayBuffer));
 
     return Response.json({ success: true, text: extractedText.trim() });
 
