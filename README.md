@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FairStand — Consumer Rights AI
+
+FairStand is an AI-powered web app that helps ordinary Indians understand their consumer rights and take action when cheated by a business. Describe your situation in plain language and instantly get the law that protects you, steps to take, the right portal to complain on, and a ready-to-send complaint letter.
+
+🔗 **Live Demo:** https://consumer-rights-ai-846w.vercel.app
+
+---
+
+## The Problem
+
+Most people don't know their consumer rights. Even if they do, filing a complaint feels impossible — which form, which authority, what to write. So people absorb the loss. FairStand fixes that.
+
+---
+
+## Features
+
+- Analyzes your situation and identifies the legal violation
+- Cites the exact law that protects you (Consumer Protection Act 2019, RBI, IRDAI, RERA)
+- Gives immediate action steps
+- Links you to the right grievance portal
+- Generates a ready-to-send complaint letter instantly
+- Covers 11 categories — e-commerce, banking, insurance, telecom, healthcare, and more
+
+---
+
+## Tech Stack
+
+- **Frontend & Backend** — Next.js 15 (App Router)
+- **AI** — Groq API with Llama 3.3 70B
+- **Styling** — Tailwind CSS + custom CSS
+- **Deployment** — Vercel
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/consumer-rights-ai
+cd consumer-rights-ai
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env.local` file:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How It Works
 
-## Learn More
+1. **Describe** — User explains what happened in plain language
+2. **Analyze** — AI identifies the violation, applicable law, and severity
+3. **Act** — User gets exact steps, portal link, and a complaint letter ready to send
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Categories Covered
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+E-commerce, Banking & Finance, Insurance, Real Estate, Healthcare, Telecom, Food & Restaurant, Education, Employment, Government Services
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [Abhishek AS]
