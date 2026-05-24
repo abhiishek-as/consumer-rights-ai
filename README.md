@@ -70,4 +70,20 @@ E-commerce, Banking & Finance, Insurance, Real Estate, Healthcare, Telecom, Food
 
 ---
 
+## Usage
+
+1. Select the category that matches your problem
+2. Describe what happened in plain language
+3. Click **Analyze My Case**
+4. Review your rights, steps, and complaint letter
+5. Download the full report as PDF or copy the complaint letter
+
+---
+
+## License
+
+MIT License — free to use, modify, and distribute.
+
+---
+
 Built by [Abhishek AS]
