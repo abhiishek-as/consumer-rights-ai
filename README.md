@@ -35,7 +35,7 @@ Most people don't know their consumer rights. Even if they do, filing a complain
 ## Getting Started
 
 ```bash
-git clone https://github.com/yourusername/consumer-rights-ai
+git clone https://github.com/abhiishek-as/consumer-rights-ai
 cd consumer-rights-ai
 npm install
 ```
