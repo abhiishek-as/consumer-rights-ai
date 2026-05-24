@@ -568,7 +568,7 @@ export default function Home() {
             <div className="field-label">Where to File Your Complaint</div>
             <div className="portal-box">
               <div className="portal-name">{result.portal.name}</div>
-              <div className="portal-url">{result.portal.url}</div>
+              <a className="portal-url" href={result.portal.url} target="_blank" rel="noopener noreferrer">{result.portal.url}</a>
               <div className="portal-timeline">Expected resolution: {result.portal.timeline}</div>
             </div>
 
