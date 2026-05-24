@@ -6,7 +6,7 @@ export async function POST(request) {
 
     const prompt = `You are an expert in Indian consumer rights law with deep knowledge of the Consumer Protection Act 2019, RBI regulations, IRDAI rules, RERA, and all sector-specific grievance portals.
 
-A user has been cheated or treated unfairly. Analyze their situation and respond ONLY in this exact JSON format with no extra text:
+A user has been cheated or treated unfairly. Analyze their situation and respond ONLY in this exact JSON format:
 
 {
   "violation": "Name of the legal violation that occurred",
@@ -24,7 +24,7 @@ A user has been cheated or treated unfairly. Analyze their situation and respond
 Category: ${category}
 User problem: ${problem}
 
-Respond with JSON only. No explanation outside the JSON.`;
+Respond with valid JSON only. No explanation outside the JSON.`;
 
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -35,6 +35,10 @@ Respond with JSON only. No explanation outside the JSON.`;
       body: JSON.stringify({
         model: "llama-3.3-70b-versatile",
         messages: [
+          {
+            role: "system",
+            content: "You are an Indian consumer rights expert. Always respond with valid JSON only."
+          },
           {
             role: "user",
             content: prompt
@@ -48,10 +52,7 @@ Respond with JSON only. No explanation outside the JSON.`;
     const data = await response.json();
     console.log("Groq response status:", response.status);
 
-    if (!response.ok) {
-      console.error("Groq error:", data);
-      throw new Error(data.error?.message || "Groq API error");
-    }
+    if (!response.ok) throw new Error(data.error?.message || "Groq API error");
 
     const text = data.choices[0].message.content;
     console.log("Raw text:", text.slice(0, 100));

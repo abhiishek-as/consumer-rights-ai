@@ -21,7 +21,36 @@ export default function Home() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const [uploadedText, setUploadedText] = useState("");
+  const [uploading, setUploading] = useState(false);
+  
+  async function handleFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await fetch('/api/extract', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+      const data = await res.json();
+      if (data.success) {
+        setProblem(data.text);
+        setUploadedText(data.text);
+      } else {
+        setError('Could not read file. Try again.');
+      }
+    } catch (err) {
+      setError('Upload failed. Try again.');
+    } finally {
+      setUploading(false);
+    }
+  }
   async function handleSubmit() {
     if (!problem || !category) {
       setError("Please fill in both fields.");
@@ -35,7 +64,7 @@ export default function Home() {
       const res = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ problem, category }),
+        body: JSON.stringify({ problem, category}),
       });
       const data = await res.json();
       if (data.success) {
@@ -518,7 +547,6 @@ export default function Home() {
         {/* Form Card */}
         <div className="card">
           <div className="card-title">Analyze Your Case</div>
-
           <label>What category is your problem?</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="">Select a category...</option>
@@ -526,7 +554,26 @@ export default function Home() {
               <option key={c} value={c}>{c}</option>
             ))}
           </select>
-
+          <div style={{marginBottom: '1rem'}}>
+            <label>Upload a document (optional)</label>
+            <div style={{border: '1.5px dashed #d0dce8', borderRadius: '10px', padding: '1rem', textAlign: 'center', background: '#f8fafc', cursor: 'pointer'}}
+              onClick={() => document.getElementById('fileInput').click()}>
+              <input
+                id="fileInput"
+                type="file"
+                accept=".pdf,.txt"
+                style={{display: 'none'}}
+                onChange={handleFileUpload}
+              />
+              {uploading ? (
+                <p style={{fontSize: '13px', color: '#1a6fc4'}}>Reading document...</p>
+              ) : uploadedText ? (
+                <p style={{fontSize: '13px', color: '#166534'}}>Document uploaded and ready</p>
+              ) : (
+                <p style={{fontSize: '13px', color: '#6b8cae'}}>Click to upload a PDF or text file — receipt, notice, or agreement</p>
+              )}
+            </div>
+          </div>
           <label>Describe what happened</label>
           <textarea
             rows={5}
