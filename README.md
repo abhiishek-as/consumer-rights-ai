@@ -5,14 +5,15 @@ FairStand is an AI-powered web app that helps ordinary Indians understand their 
 🔗 **Live Demo:** https://consumer-rights-ai-846w.vercel.app
 
 ---
+
 ## Screenshots
 
 ### Form
-![FairStand Form](./public/screenshot-form.png)
+![FairStand Form 1](./public/screenshot-form1.png)
+![FairStand Form 2](./public/screenshot-form2.png)
 
 ### Result
 ![FairStand Result 1](./public/screenshot-result1.png)
-
 ![FairStand Result 2](./public/screenshot-result2.png)
 
 ---
